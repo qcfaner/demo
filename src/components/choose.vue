@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- 表单 -->
-    <el-form :model="ruleForm" ref="ruleForm" label-width="110px">
-      <el-form-item label="指定业务员" prop="name" :rules="rules.name">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="110px">
+      <el-form-item label="指定业务员" prop="name">
         <el-input v-model="ruleForm.name" placeholder="请选择指定业务员" style="width: 280px;" disabled>
           <template slot="append">
             <el-button @click="openSalesmanDialog(true)">请选择</el-button>
@@ -10,7 +10,7 @@
           </template>
         </el-input>
       </el-form-item>
-      <el-form-item label="目标销售金额" prop="money" :rules="rules.money">
+      <el-form-item label="目标销售金额" prop="money">
         <el-input-number
           v-model="ruleForm.money"
           controls-position="right"
@@ -20,7 +20,7 @@
         ></el-input-number>
         <span style="padding-left: 10px;">元</span>
       </el-form-item>
-      <el-form-item label="指定月份" prop="month" :rules="rules.month">
+      <el-form-item label="指定月份" prop="month">
         <el-date-picker v-model="ruleForm.month" type="month" placeholder="请选择月份"></el-date-picker>
       </el-form-item>
       <el-form-item>
@@ -98,13 +98,17 @@ export default {
 
       // 表单校验规则。可支持自定义校验规则
       rules: {
-        name: { required: true, message: "请选择业务人员", trigger: "change" },
-        money: {
-          required: true,
-          message: "请输入目标销售金额",
-          trigger: "blur",
-        },
-        month: { required: true, message: "请选择月份", trigger: "change" },
+        name: [
+          { required: true, message: "请选择业务人员", trigger: "change" },
+        ],
+        money: [
+          {
+            required: true,
+            message: "请输入目标销售金额",
+            trigger: "blur",
+          },
+        ],
+        month: [{ required: true, message: "请选择月份", trigger: "change" }],
       },
 
       // 选择业务员弹窗 options
