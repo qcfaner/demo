@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import myPlugin from "./components/choose";
+import myPlugin from "./components/details";
 
 export default {
   name: "App",

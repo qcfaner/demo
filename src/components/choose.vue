@@ -30,7 +30,7 @@
     </el-form>
 
     <!-- 弹窗 -->
-    <el-dialog title="请选择业务员" :visible.sync="chooseOp.visible" width="55%">
+    <el-dialog title="请选择业务员" :visible.sync="chooseOp.visible" class="abc" width="55%">
       <div>
         <!-- 搜索区域 -->
         <div class="search-content">
@@ -206,5 +206,8 @@ export default {
 .salesman-paging {
   text-align: right;
   margin-top: 15px;
+}
+.abc /deep/ .el-dialog__body {
+  padding: 15px 20px;
 }
 </style>
